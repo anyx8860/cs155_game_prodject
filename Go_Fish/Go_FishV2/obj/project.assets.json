@@ -8,23 +8,23 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\W7315133\\.nuget\\packages\\": {},
+    "C:\\Users\\w7266079\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\W7315133\\source\\repos\\cs155_game_prodject\\Go_Fish\\Go_FishV2\\Go_FishV2.csproj",
+      "projectUniqueName": "C:\\Users\\w7266079\\source\\repos\\cs155_game_prodject\\Go_Fish\\Go_FishV2\\Go_FishV2.csproj",
       "projectName": "Go_FishV2",
-      "projectPath": "C:\\Users\\W7315133\\source\\repos\\cs155_game_prodject\\Go_Fish\\Go_FishV2\\Go_FishV2.csproj",
-      "packagesPath": "C:\\Users\\W7315133\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\W7315133\\source\\repos\\cs155_game_prodject\\Go_Fish\\Go_FishV2\\obj\\",
+      "projectPath": "C:\\Users\\w7266079\\source\\repos\\cs155_game_prodject\\Go_Fish\\Go_FishV2\\Go_FishV2.csproj",
+      "packagesPath": "C:\\Users\\w7266079\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\w7266079\\source\\repos\\cs155_game_prodject\\Go_Fish\\Go_FishV2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\W7315133\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\w7266079\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

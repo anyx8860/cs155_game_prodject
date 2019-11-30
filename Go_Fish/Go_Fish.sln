@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Go_Fish", "Go_Fish\Go_Fish.csproj", "{EF841747-EAA6-4EA6-9786-2616D4BC7C12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go_FishV2", "Go_FishV2\Go_FishV2.csproj", "{D6CAACE1-6C66-4728-BB36-CCB75D17B7DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Go_FishV2", "Go_FishV2\Go_FishV2.csproj", "{D6CAACE1-6C66-4728-BB36-CCB75D17B7DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalProjectPrototype", "..\..\CenterAnnie\FinalProjectPrototype\FinalProjectPrototype.csproj", "{105E9A76-E533-4FB7-B61E-40C4B574C21F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D6CAACE1-6C66-4728-BB36-CCB75D17B7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6CAACE1-6C66-4728-BB36-CCB75D17B7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6CAACE1-6C66-4728-BB36-CCB75D17B7DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105E9A76-E533-4FB7-B61E-40C4B574C21F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105E9A76-E533-4FB7-B61E-40C4B574C21F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105E9A76-E533-4FB7-B61E-40C4B574C21F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105E9A76-E533-4FB7-B61E-40C4B574C21F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
