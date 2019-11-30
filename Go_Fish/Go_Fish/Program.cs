@@ -60,13 +60,11 @@ namespace Go_Fish
             Console.WriteLine("The current number of cards in the deck is: {0}", gameDeck.getCount());
 
 
-            // Test the peek method, if we were not printing out the cards to the console - theoretical
 
 
 
 
-
-
+            Console.ReadKey();
 
         }
     }

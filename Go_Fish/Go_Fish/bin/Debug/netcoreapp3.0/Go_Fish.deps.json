@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "Go_Fish/1.0.0": {
+        "runtime": {
+          "Go_Fish.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Go_Fish/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
