@@ -1,0 +1,11 @@
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\obj\Debug\netcoreapp3.0\Go_FishV3.csprojAssemblyReference.cache
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\obj\Debug\netcoreapp3.0\Go_FishV3.AssemblyInfoInputs.cache
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\obj\Debug\netcoreapp3.0\Go_FishV3.AssemblyInfo.cs
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\bin\Debug\netcoreapp3.0\Go_FishV3.exe
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\bin\Debug\netcoreapp3.0\Go_FishV3.deps.json
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\bin\Debug\netcoreapp3.0\Go_FishV3.runtimeconfig.json
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\bin\Debug\netcoreapp3.0\Go_FishV3.runtimeconfig.dev.json
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\bin\Debug\netcoreapp3.0\Go_FishV3.dll
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\bin\Debug\netcoreapp3.0\Go_FishV3.pdb
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\obj\Debug\netcoreapp3.0\Go_FishV3.dll
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\Go_FishV3\obj\Debug\netcoreapp3.0\Go_FishV3.pdb
