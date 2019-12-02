@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GoFish
 {
     class Program
     {
         static Deck deck = new Deck();
+        static List<string> str_list = new List<string>(new string[] {"Ace", "Two", "Three", "Four", "Five", "Six",
+            "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"});
+
         static void Main(string[] args)
         {          
             // Create players
@@ -17,9 +21,14 @@ namespace GoFish
             player.Name = name;
 
             // While both players still have cards, keep playing rounds
-            while(cpu.Num_Of_Cards > 0 || player.Num_Of_Cards > 0)
+            while(player.Num_Of_Books < 7 && cpu.Num_Of_Books < 7)
             {
                 PlayRoundWithCPU(player, cpu);
+            }
+
+            for(int i = 0; i < 10; i++)  
+            {
+                Console.WriteLine();
             }
 
             // Output the winner
@@ -37,53 +46,97 @@ namespace GoFish
         // A round of the game with a CPU 
         public static void PlayRoundWithCPU(Player player, Player cpu) {
             PlayerTurn(player, cpu);
+
+            if(player.Num_Of_Books >= 7 || cpu.Num_Of_Books >= 7) {
+                return;
+            }
+
             CPUTurn(cpu, player);
         }
 
         // Player Turn
         public static void PlayerTurn(Player player1, Player player2)
         {
-            // Prints initial turn info
-            Console.WriteLine();
-            player1.GetAllBooks(); // Checks for any books in the initial hand
-            Console.WriteLine();
-            Console.WriteLine(player1.ToString());  // Prints player's hand         
-            Console.WriteLine("{0}'s Books: {1}", player1.Name, player1.Num_Of_Books); // Prints number of books
-            Console.WriteLine();
+            DisplayPlayerInfo(player1);
 
-            // Reads in player's choice of face to ask other player for.
-            Console.Write("What card face would you like to ask for?\nEnter face here (ex. Two): ");
-            string face_str = Console.ReadLine();
-            Faces face = (Faces)Enum.Parse(typeof(Faces), face_str);
-           
+            if(player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) {
+                return;
+            }
+
+            Faces face = ChooseFace(player1);
+            
             while(player1.AskForCards(player2, face)) // While AskForCards() returns true
             {
                 Console.WriteLine();
-
-                // Prints what cards player took from other player (if statement to deal with the 'es' that must be added to 'six' in plural)
-                if(face == Faces.Six)
-                {
-                    Console.WriteLine("You took {0}'s {1}es.", player2.Name, face);
-                }
-                else 
-                {
-                    Console.WriteLine("You took {0}'s {1}s.", player2.Name, face);
-                }        
+                DisplayFaceTakenFrom(player1, player2, face);
                 Console.WriteLine();
-                player1.GetAllBooks(); // Gets all books before printing hand
-                Console.WriteLine(player1.ToString()); // Prints hand after player gets all cards from other player
-                Console.WriteLine();               
-                Console.WriteLine("{0}'s Books: {1}", player1.Name, player1.Num_Of_Books);
-                Console.WriteLine();
+                DisplayPlayerInfo(player1);
 
-                // Prompts player to ask for more cards since the last ask was successful
-                Console.Write("What card face would you like to ask for?\nEnter face here (ex. Two): "); 
-                face_str = Console.ReadLine();
-                face = (Faces)Enum.Parse(typeof(Faces), face_str);
+                if(player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) 
+                {
+                    return;
+                }           
+
+                face = ChooseFace(player1);
             }
 
-            // Prints if AskForCards() returns false
+            // GoFish() if AskForCards() returns false
             Console.WriteLine();
+            GoFish(player1, player2, face);
+            DisplayPlayerInfo(player1);
+
+            if(player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) 
+            {
+                return;
+            }            
+
+            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft()); // Prints cards left in deck
+        }
+
+        // CPU Turn
+        public static void CPUTurn(Player cpu, Player player)
+        {
+            DisplayPlayerInfo(cpu);
+
+            if(cpu.Num_Of_Books >= 7 || player.Num_Of_Books >= 7) 
+            {
+                return;
+            }
+
+            int n = cpu.Num_Of_Cards - 1;
+            Faces face = cpu.GetCardAtIndex(n).Face;
+            DrawCardIfHandIsEmpty(cpu);
+
+            while(cpu.AskForCards(player, face)) 
+            {
+                Console.WriteLine();
+                DrawCardIfHandIsEmpty(cpu);               
+                DisplayFaceTakenFrom(cpu, player, face); 
+                DisplayPlayerInfo(cpu);
+
+                if(cpu.Num_Of_Books >= 7 || player.Num_Of_Books >= 7) 
+                {
+                    return;
+                }
+
+                n = 0;
+                face = cpu.GetCardAtIndex(n).Face;
+            }
+
+            Console.WriteLine();
+            GoFish(cpu, player, face);
+            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft());
+        }
+
+        public static void DrawCardIfHandIsEmpty(Player player) {
+            if(player.HandIsEmpty())
+                {
+                    player.DrawCard(deck);
+                }
+        }
+
+        public static void GoFish(Player player1, Player player2, Faces face) 
+        {
             if(face == Faces.Six)
             {
                 Console.WriteLine("{0} doesn't have any {1}es. Go Fish!", player2.Name, face);
@@ -91,50 +144,75 @@ namespace GoFish
             else 
             {
                 Console.WriteLine("{0} doesn't have any {1}s. Go Fish!", player2.Name, face);
-            }     
-           
-            player1.DrawCard(deck); // Player goes fishing
-            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft()); // Prints cards left in deck
+            }                      
+            player1.DrawCard(deck);
         }
 
-        // CPU Turn
-        public static void CPUTurn(Player cpu, Player player)
+        public static void DisplayPlayerInfo(Player player)
         {
             Console.WriteLine();
-            Console.WriteLine(cpu.Name);
-            cpu.GetAllBooks();
-            Console.WriteLine("{0}'s Books: {1}", cpu.Name, cpu.Num_Of_Books);
+            DrawCardIfHandIsEmpty(player);           
+            player.GetAllBooks(); // Checks for any books in the initial hand
+            DrawCardIfHandIsEmpty(player);
 
-            int n = cpu.Num_Of_Cards - 1;
-            Faces face = cpu.GetCardAtIndex(n).Face;
-
-            while(cpu.AskForCards(player, face)) 
+            if(player.Name == "CPU")
             {
-                Console.WriteLine();
-                if(face == Faces.Six){
-                    Console.WriteLine("{0} took your {1}es.", cpu.Name, face);
+                Console.WriteLine("CPU");
+            }
+            else
+            {
+                Console.WriteLine(player.ToString());  // Prints player's hand 
+            }
+                   
+            Console.WriteLine("{0}'s Books: {1}", player.Name, player.Num_Of_Books); // Prints number of books
+            Console.WriteLine();
+        }
+
+        public static Faces ChooseFace(Player player) 
+        {
+            // Reads in player's choice of face to ask other player for
+            Console.Write("What card face would you like to ask for?\nEnter face here (ex. Two): ");
+            string face_str = Console.ReadLine();
+            Console.WriteLine();
+
+            while(!player.HasCard(face_str))
+            {               
+                if(str_list.Contains(face_str)){
+                    if(face_str == "Six")
+                    {
+                        Console.Write("You don't have hany {0}es. Please choose a face from your hand.\nEnter face: ", face_str);
+                    }
+                    else 
+                    {
+                        Console.Write("You don't have hany {0}s.  Please choose a face from your hand.\nEnter face: ", face_str);
+                    }     
+                    face_str = Console.ReadLine();
+                    Console.WriteLine();          
+                }
+                else
+                {
+                    Console.Write("{0} is not a valid face.\nPlease enter a valid face here (ex. Ace, Two, Three...): ", face_str);
+                    face_str = Console.ReadLine();
+                    Console.WriteLine();               
+                }
+            }
+
+            Faces face = (Faces)Enum.Parse(typeof(Faces), face_str);    
+                
+            Console.WriteLine();  
+        
+            return face;      
+        }
+
+        public static void DisplayFaceTakenFrom(Player player1, Player player2, Faces face) {
+            if(face == Faces.Six)
+                {
+                    Console.WriteLine("{0} took {1}'s {2}es.", player1.Name, player2.Name, face);
                 }
                 else 
                 {
-                    Console.WriteLine("{0} took your {1}s.", cpu.Name, face);
-                }                
-                cpu.GetAllBooks();
-                Console.WriteLine("{0}'s Books: {1}", cpu.Name, cpu.Num_Of_Books);
-                n = cpu.Num_Of_Cards - 1;
-                face = cpu.GetCardAtIndex(n).Face;
-            }
-
-            Console.WriteLine();
-            if(face == Faces.Six)
-            {
-                Console.WriteLine("{0} doesn't have any {1}es. Go Fish!", player.Name, face);
-            }
-            else 
-            {
-                Console.WriteLine("{0} doesn't have any {1}s. Go Fish!", player.Name, face);
-            }                      
-            cpu.DrawCard(deck);
-            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft());
+                    Console.WriteLine("{0} took {1}'s {2}s.", player1.Name, player2.Name, face);
+                }        
         }
     }
 }

@@ -80,8 +80,11 @@ namespace GoFish
 
         public void DrawCard(Deck deck)
         {
-            hand.Add(deck.TakeCard());
-            Num_Of_Cards++;
+            if(!deck.IsEmpty())
+            {
+                hand.Add(deck.TakeCard());
+                Num_Of_Cards++;
+            }            
         }
 
         public void AddCardToHand(Card card)
@@ -100,6 +103,10 @@ namespace GoFish
         public void SortHand() 
         {
             hand.Sort();
+        }
+
+        public bool HandIsEmpty() {
+            return hand.Count == 0;
         }
 
         public bool AskForCards(Player other_player, Faces face)
@@ -144,6 +151,18 @@ namespace GoFish
             foreach (Card card in hand)
             {
                 if (card.Face == face)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool HasCard(string face) {
+            foreach (Card card in hand)
+            {
+                if (card.Face.ToString() == face)
                 {
                     return true;
                 }
