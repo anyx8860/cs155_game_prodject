@@ -57,9 +57,13 @@ namespace GoFish
         // Player Turn
         public static void PlayerTurn(Player player1, Player player2)
         {
+            Console.Write("\n\n");
+            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft()); // Prints cards left in deck
+            Console.WriteLine();
             DisplayPlayerInfo(player1);
+            Console.WriteLine();
 
-            if(player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) {
+            if (player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) {
                 return;
             }
 
@@ -69,10 +73,11 @@ namespace GoFish
             {
                 Console.WriteLine();
                 DisplayFaceTakenFrom(player1, player2, face);
-                Console.WriteLine();
+                Console.WriteLine("\n");
                 DisplayPlayerInfo(player1);
+                Console.WriteLine("\n");
 
-                if(player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) 
+                if (player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) 
                 {
                     return;
                 }           
@@ -83,19 +88,21 @@ namespace GoFish
             // GoFish() if AskForCards() returns false
             Console.WriteLine();
             GoFish(player1, player2, face);
+            Console.WriteLine("\n");
             DisplayPlayerInfo(player1);
 
             if(player1.Num_Of_Books >= 7 || player2.Num_Of_Books >= 7) 
             {
                 return;
             }            
-
-            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft()); // Prints cards left in deck
         }
 
         // CPU Turn
         public static void CPUTurn(Player cpu, Player player)
         {
+            Console.Write("\n\n");
+            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft());
+            Console.WriteLine();
             DisplayPlayerInfo(cpu);
 
             if(cpu.Num_Of_Books >= 7 || player.Num_Of_Books >= 7) 
@@ -111,10 +118,12 @@ namespace GoFish
             {
                 Console.WriteLine();
                 DrawCardIfHandIsEmpty(cpu);               
-                DisplayFaceTakenFrom(cpu, player, face); 
+                DisplayFaceTakenFrom(cpu, player, face);
+                Console.WriteLine();
                 DisplayPlayerInfo(cpu);
+                Console.WriteLine();
 
-                if(cpu.Num_Of_Books >= 7 || player.Num_Of_Books >= 7) 
+                if (cpu.Num_Of_Books >= 7 || player.Num_Of_Books >= 7) 
                 {
                     return;
                 }
@@ -125,7 +134,7 @@ namespace GoFish
 
             Console.WriteLine();
             GoFish(cpu, player, face);
-            Console.WriteLine("Cards left in the deck: {0}", deck.GetCardsLeft());
+            Console.WriteLine("\n");
         }
 
         public static void DrawCardIfHandIsEmpty(Player player) {
@@ -146,11 +155,13 @@ namespace GoFish
                 Console.WriteLine("{0} doesn't have any {1}s. Go Fish!", player2.Name, face);
             }                      
             player1.DrawCard(deck);
+
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
         }
 
         public static void DisplayPlayerInfo(Player player)
         {
-            Console.WriteLine();
             DrawCardIfHandIsEmpty(player);           
             player.GetAllBooks(); // Checks for any books in the initial hand
             DrawCardIfHandIsEmpty(player);
@@ -165,7 +176,6 @@ namespace GoFish
             }
                    
             Console.WriteLine("{0}'s Books: {1}", player.Name, player.Num_Of_Books); // Prints number of books
-            Console.WriteLine();
         }
 
         public static Faces ChooseFace(Player player) 
@@ -187,32 +197,35 @@ namespace GoFish
                         Console.Write("You don't have hany {0}s.  Please choose a face from your hand.\nEnter face: ", face_str);
                     }     
                     face_str = Console.ReadLine();
-                    Console.WriteLine();          
+                    Console.WriteLine();
                 }
                 else
                 {
                     Console.Write("{0} is not a valid face.\nPlease enter a valid face here (ex. Ace, Two, Three...): ", face_str);
                     face_str = Console.ReadLine();
-                    Console.WriteLine();               
+                    Console.WriteLine();
                 }
             }
 
-            Faces face = (Faces)Enum.Parse(typeof(Faces), face_str);    
-                
-            Console.WriteLine();  
-        
+            Console.WriteLine();
+
+            Faces face = (Faces)Enum.Parse(typeof(Faces), face_str);
+
             return face;      
         }
 
         public static void DisplayFaceTakenFrom(Player player1, Player player2, Faces face) {
             if(face == Faces.Six)
-                {
-                    Console.WriteLine("{0} took {1}'s {2}es.", player1.Name, player2.Name, face);
-                }
-                else 
-                {
-                    Console.WriteLine("{0} took {1}'s {2}s.", player1.Name, player2.Name, face);
-                }        
+            {
+                Console.WriteLine("{0} took {1}'s {2}es.", player1.Name, player2.Name, face);
+            }
+            else 
+            {
+                Console.WriteLine("{0} took {1}'s {2}s.", player1.Name, player2.Name, face);
+            }
+
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
         }
     }
 }

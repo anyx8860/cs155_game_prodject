@@ -8,3 +8,4 @@ C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\GoFish\obj\Debug\netc
 C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\GoFish\obj\Debug\netcoreapp3.0\GoFish.AssemblyInfo.cs
 C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\GoFish\obj\Debug\netcoreapp3.0\GoFish.dll
 C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\GoFish\obj\Debug\netcoreapp3.0\GoFish.pdb
+C:\Users\w7266079\source\repos\cs155_game_prodject\Go_Fish\GoFish\obj\Debug\netcoreapp3.0\GoFish.csprojAssemblyReference.cache
